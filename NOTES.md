@@ -37,3 +37,4 @@ Features:
 
 Hadoop 2.x with YARN included in Fedora 20!
 
+> yarn jar /usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples-2.6.0-cdh5.13.0.jar pi 16 1000
