@@ -38,3 +38,27 @@ Features:
 Hadoop 2.x with YARN included in Fedora 20!
 
 > yarn jar /usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples-2.6.0-cdh5.13.0.jar pi 16 1000
+> hdfs fsck /
+> yum install pdsh
+
+> pdsh -w n[0-2] uptime
+> pdsh -w ^all-hosts date # use a host file
+
+
+# Apache whirr
+
+
+## YARN Components
+
++ ResourceManager(~ JobTracker)
++ YARN containers
++ NodeManager(~|~ TaskTracker)
++ ApplicationMaster
+
+
+### YARN Architecture
+
+
+
+
+
