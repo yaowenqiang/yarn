@@ -58,6 +58,61 @@ Hadoop 2.x with YARN included in Fedora 20!
 
 ### YARN Architecture
 
+#### ResourceManager
+
++ +Only scheduling "task neutral"
++ Manages YARN container provisioning
++ Negotiates resources with ApplicationMaster
++ Ultimate arbitrator of resources(can recall Containers)
++ Does not provide applications specific status
+
+### YARN Containers
+
++ A collection of physical resources such as RAM, CPU cores, disks etc.
++ Multiple containers per node, rack(e.g. 1 core, 1GB RAM)
++ Large containers multiple of minimum memory size
++ Assigned by REsource Manager and managed by NodeManager
+
+### NodeManager
+
++ Per node resource(work) manager
++ Manges containers assigned to it by ResourceManager
++ Releases finished containers back to ResourceManager
++ Monitors node health, container resources, and kills container if it exceeds provisioned limits
+
+
+### ApplicationMaster
+
++ Coordinates application execution on the cluster
++ Negotiates with ResourceManager for containers
++ Can use containers for anything
++ Dynamic relationship with ResourceManager, may be asked to return containers
++ Sometimes called "Container 0." negotiated between client and ResourceManager
+
+### JobHistoryServer (MapReduce)
+
++ Tracks job progress
++ Was part of JobTracker
++ MapReduce sends progress to JHS
++ Information used by Web GUI
+
+
+### YARN Work Flow Scheduling
+
+
+Scheduling is the sole responsibility of the ResourceManager, There are three "pluggable" options, Defined ,in yarn-site.xml
+
+YARN Scheduling Options
+
++ FIFO Scheduler
++ Capacity Scheduler(default)
++ Fair Scheduler
+
+
+
+
+
+
 
 
 
