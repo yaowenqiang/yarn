@@ -108,6 +108,27 @@ YARN Scheduling Options
 + Capacity Scheduler(default)
 + Fair Scheduler
 
+#### Capacity Scheduler
+
++ One or more queues(groups) with a predetermined fraction of the total capacity
++ Guarantees a minimum amount of resources for each queue
++ Excess capacity given to most starved queues
++ Support big memory applications
++ Best for well known work load flow
++ Default Scheduler in Apache Hadoop V2
+
+#### Fair Scheduler
+
++ Applications get, on average, an equal share of resources over time
++ Application belongs to a apecific queue
++ Containers are given to the queue with the least amount of allocated resources
++ Supports Container resource specification
++ Best for unknown varied workloads
++ Not in wide use
+
+> Note: Fair Scheduler from hadoop version 1 is being ported to hadoop version 2
+
+
 
 
 
