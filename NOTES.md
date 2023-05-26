@@ -129,6 +129,23 @@ YARN Scheduling Options
 > Note: Fair Scheduler from hadoop version 1 is being ported to hadoop version 2
 
 
+### Understand scripted administration
+
+Hadoop YARN Administration Files
+
++ core-site.xml - System wide properties
++ hdfs-site-xml - Hadoop Parallel File System properties
++ mapred-site.xml - Properties for the YARN MapReduce framework
++ yarn-site.xml - YARN properties
++ capacity-scheduler.xml - Capacity Scheduler properties
+
+A complete list of default properties for all these files:
+> http://hadoop.apache.org/docs/current/(look at the bottom left of the page under Configuration.)
+
+
+
+
+
 
 
 
