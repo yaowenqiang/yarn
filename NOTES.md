@@ -143,9 +143,54 @@ A complete list of default properties for all these files:
 > http://hadoop.apache.org/docs/current/(look at the bottom left of the page under Configuration.)
 
 
+#### Adding and Decommissioning YARN Nodes
+
+1. Include YARN nodes file property yarn-site.yml;
+    yarn.resourcemanager.nodes.include-path
+2. Exclude YARN nodes file property in yarn-site.xml
+    yarn.resourcemanager.exclude-path
+3. Then run
+    # yarn rmadmin -refreshNodes
+
+Separate from HDFS node management, can use hostname or IP address
+
+Notes: The mradmin  from Hadoop version1 funcionality is now replaced with rmadmin
+
+#### Changes to the Capacity Scheduler
+
+Adjust properies in capacity-scheduler.xml, then run
+> yarn rmadmin -refreshQueues
+
+Note: Queues cannot be deleted at this point, only addition of new queues is supported and the updated queue configuration must be valid, i.e, queue-capacity at each level should be equal to 100%
 
 
+#### YARN WebProxy
 
++ A seperate proxy server in YARN that addresses security issues
++ By default the proxy is run as part of the ResourceManager
++ Configure as stand alone mode by changing the configuration property yarn.web-proxy.address, in yarn-site.xml (e.g hostname:8086)
++ By default an empty string which means it runs on the ResourceManager
++ In a standalone mode, yarn.web-proxy.pricipal and yarn.web-proxy.keytab control the Kerberos principal name and the curresponding keytab for use in secure mode
+
+#### Managing YARN jobs
+
+YARN jobs can be managed using the 'yarn application' command, Options include
+
++appType <Comma-separated list of application types> Works with --list to filter application based on their type(ALL, NEW, NEW_SAVING,SUBMITTING, ACCEPTED, RUNNING, FINISHED, FAILED, ILLED )
+-help       Displays help for all commands
+-kill <Application ID>   Kill the application
+-list           List applications from the RM< Supports options use of -appTypes to filter application based on application type
+-status <Application ID>    Prints the status of the application
+
+Also MapReduce job can also be controlled with the 'mapred job' command
+
+#### Setting Container Memory
+
+Three value in the yarn-site.xml file These settings are as follows:
+
++ yarn.nodemanager.resource.memory-mb is the amount of memory the NodeManager can use for containers(default 8192MB)
++ yarn.scheduler.minimum-allocation-mb is the smallest container allowed by the ResourceManager. A requested  container smaller then this will result in a allocated container of this size (default 1024MB)
++ yarn.scheduler.maximum-allocation-mb is the largest container allowed by the ResourceManager(default 8192MB)
 
 
 
