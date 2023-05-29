@@ -192,7 +192,24 @@ Three value in the yarn-site.xml file These settings are as follows:
 + yarn.scheduler.minimum-allocation-mb is the smallest container allowed by the ResourceManager. A requested  container smaller then this will result in a allocated container of this size (default 1024MB)
 + yarn.scheduler.maximum-allocation-mb is the largest container allowed by the ResourceManager(default 8192MB)
 
+#### Setting Container Cores
 
+To set the number of cores for containers use the following properties in the yarn-site.xml
+
++ yarn.scheduler.minimum-allocation-vcores is the minimum cores with which a container can be requested(default 1)
++ yarn.scheduler.maximum-allocation-vcores is the maximum cores with which a container can be requested(default 23)
++ yarn.nodemanager.resource.cpu-vcores is the number of CPU cores that can be allocated for containers from a node (default 8)
+
+#### Setting MapReduce Properties
+
+As a YARN application, MapReduce properties are set in mapred-site.xml. For example, the following properties are for setting some Java arguments and memory size for both the map and reduce containers.
++ mapreduce.map.memory.mb provides larger or smaller resource limit for maps(default 1536M)
++ mapreduce.map.java.opts provides larger or smaller heap-size for child mappers(default -Xmx 1024M)
++ mapreduce.reduce.memory.mb provides larger or smaller resource limit for reducers(default 3072M)
++ mapreduce.reduce.java.opts provides larger or smaller heap-size for child reducers(default -Xmx256M)
+
+
+### Usnerstanding MapReduce Framework
 
 
 
