@@ -212,6 +212,28 @@ As a YARN application, MapReduce properties are set in mapred-site.xml. For exam
 ### Usnerstanding MapReduce Framework
 
 
+#### MapReduce Compatibility
+
++ Primary goal with Version 2 was MapReduce Compatibility
++ MapReduce functionality is now a YARN framework
++ ApplicationMaster is required to locate data blocks for processing and then request container on these nodes
++ ApplicationMaster handles failed tasks and requests new containers to re-run them
++ Map and Reduce tasks are now created as needed b the ApplicationMaster providing a much better cluster utilization
++ Need to add the parallel shuffle as an auxiliary service
++ Now has JobHistoryServer to track job progress
+
+
+#### Enabling ApplicationMaster Restarts
+
+ApplicationMaster failures in YARN have the capability to be restarted a specified number of times,They also have the capability to recover completed tasks after restart. To enable ApplicationMaster restarts do the following:
+
++ Inside the yarn-site.xml, you can tune the property yarn.resourcemanager.am.max-retries. The default is 2
++ Inside the mapred-site.xml you can more directly turn how many times a MapReduce ApplicationMaster should restart with the property mapreduce.am.max-attempts, the default is 2
+
+
+
+
+
 
 
 
