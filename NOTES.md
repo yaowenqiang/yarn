@@ -231,6 +231,23 @@ ApplicationMaster failures in YARN have the capability to be restarted a specifi
 + Inside the mapred-site.xml you can more directly turn how many times a MapReduce ApplicationMaster should restart with the property mapreduce.am.max-attempts, the default is 2
 
 
+### Calculating the MapReduce Capacity of a Node
+
+There are 8 important parameters for calculating a node's capacity:
+
+mapred-site.xml
+
+mapreduce.map.memory.mb and mapreduce.reduce.memory.mb - memory hard-limit for the mapper or reducer task
+mapreduce.map.java.opts and mapreduce.reduce.java.opts - The heapsize of jvm -Xmx for the mapper or reducer task. This value should always be lower than mapreduce.[map]reduce].memory.mb
+
+yarn-site.xml
+
+yarn.schedulre.minmum-allocation-mb - The smallest container yarn will allow
+yarn.schedulre.maximum-allocation-mb - The largest container yarn will allow
+yarn.nodemanager.resource.memory-mb - The amout of physical memory on the compute node for containers. it is important that this isn't the total RAM on the node
+yarn.nodemanager.vmem-pmem-ratio - The amount of virtual memory each container is allowed. This is calculated by containerMemoryRequest *  vmem-pmem-ratio
+
+
 
 
 
