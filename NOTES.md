@@ -249,6 +249,23 @@ yarn.nodemanager.vmem-pmem-ratio - The amount of virtual memory each container i
 
 
 
+| Property | Value | 
+           | - |
+mapreduce.map.memory.mb | 1536
+mapreduce.reduce.memory.mb | 2560
+mapreduce.map.java.opts | -Xmx1024m
+mapreduce.reduce.java.opts | -Xmx2048m
+yarn.scheduler.minimum-allocation-mb | 512
+yarn.scheduler.maximum-allocation-mb | 4096
+yarn.nodemanager.resource.memory-mb | 36864
+yarn.nodemanager.vmem-pmem-ratio | 2.1
+
+
+
+Calculating the MapReduce Capacity of a Node
+
++ With a virtual memory ratio of 2.1 (the default value), each map can have up to 2335.6MB of RAM or a reducer can have 5376MB of virtual ram.
++ This means that our compute node configured for 36GB(75.6GB virtual) of container space can support up to 23 maps or 14 reducers or any combination of mappers and reducers allowed by the available reosurces on the node.
 
 
 
