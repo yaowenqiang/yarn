@@ -267,6 +267,30 @@ Calculating the MapReduce Capacity of a Node
 + With a virtual memory ratio of 2.1 (the default value), each map can have up to 2335.6MB of RAM or a reducer can have 5376MB of virtual ram.
 + This means that our compute node configured for 36GB(75.6GB virtual) of container space can support up to 23 maps or 14 reducers or any combination of mappers and reducers allowed by the available reosurces on the node.
 
+#### Changes to the suffle Service
+
++ The parallel MapReduce shuffle is now an Auxiliary Service in the NodeManager
++ Started on NodeManager as a Netty Web server
++ ApplicationMaster makes use of shuffle-service through the map and reduce containers
++ Option to do encrypted shuffle
+
+
+#### binary Compability of org.apache.hadoop.mapred APIs
+
+for the vast majority of users who use the org.apache.hadoop.mapred APIs, MapReduce on YARN ensures full binary compatibility. these existing applications can run on YARN directly without recompilation. You can use jars of your existing application that codes against mapred APIs  and use bin/hadoop to submit them directly to YARN.
+
+
+#### Source Compatibility of org.apache.hadoop.mapreduce APIs
+
+It was difficult to ensure full binary combination with org.apache.hadoop.mapreduce APIs. Existing application using mapreduce APIs are source Compatibility and can run on YARN with no changes. with simple recompilation against MRv2 jars that are shipped with Hadoop 2 and/or with minor updates.
+
+
+#### Compatibility of Command-line scripts
+
++ Must of the command line scripts from Hadoop 1.x should just work
++ The mradmin functionality is now replace with rmadmin because there is not version 1 JobTracker and TaskTracker
++ If mradmin commands are executed they will produce warning messages and will not work.
++ There is no binary or source Compatibility for mradmin in Hadoop version 2 with YARN.
 
 
 
