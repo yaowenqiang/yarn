@@ -293,6 +293,10 @@ It was difficult to ensure full binary combination with org.apache.hadoop.mapred
 + There is no binary or source Compatibility for mradmin in Hadoop version 2 with YARN.
 
 
+## Understand how to use Distributed Shell
+
+> yarn org.apache.hadoop.yarn.applications.distributedshell.Client  -jar /usr/lib/hadoop-yarn/hadoop-yarn-applications-distributedshell-2.6.0-cdh5.13.0.jar  --shell_command uptime
+
 
 
 
